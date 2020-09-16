@@ -26,4 +26,4 @@ for i in range(len(D)):
 
 print(time)
 
-# 68ms
+# 64ms
