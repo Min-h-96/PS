@@ -1,3 +1,4 @@
+# 백준 1110번 문제. 더하기 사이클
 N = input()
 M = N
 count = 0
@@ -19,12 +20,4 @@ while True:
         print(count)
         break
 
-1
-11
-12
-23
-35
-58
-83
-31
-14
+# 64ms
