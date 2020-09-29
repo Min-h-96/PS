@@ -1,10 +1,35 @@
 # 백준 1978번 문제. 소수 찾기
 import sys
 
+
+def checkPrimeNum(n):
+    check = True
+    if n == 1:
+        check = False
+    else:
+        for i in range(2, int(n**0.5)+1):
+            if n % i == 0:
+                check = False
+                break
+            else:
+                continue
+    if check == True:
+        return n
+
+
 N = int(sys.stdin.readline())
 L = map(int, sys.stdin.readline().split())
-count = 0
 
+primeList = []
+
+for i in list(L):
+    if checkPrimeNum(i) != None:
+        primeList.append(checkPrimeNum(i))
+    else:
+        continue
+print(len(primeList))
+
+# 64ms
 
 """
 for i in list(L):
