@@ -1,4 +1,4 @@
-# 백준 1929번 문제. M이상 N이하 소수 출력
+# 백준 4948번 문제. 베르트랑 공준
 import sys
 
 
@@ -17,10 +17,15 @@ def checkPrimeNum(n):
         return n
 
 
-M, N = map(int, sys.stdin.readline().split())
+while True:
+    n = int(sys.stdin.readline())
+    lst = []
+    if n == 0:
+        break
+    else:
+        for i in range(n+1, 2*n+1):
+            if checkPrimeNum(i) != None:
+                lst.append(checkPrimeNum(i))
+        print(len(lst))
 
-for i in range(M, N+1):
-    if checkPrimeNum(i) != None:
-        print(i)
-
-# 4028ms
+# 시간초과
