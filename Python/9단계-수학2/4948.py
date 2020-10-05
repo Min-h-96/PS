@@ -2,30 +2,25 @@
 import sys
 
 
-def checkPrimeNum(n):
-    check = True
-    if n == 1:
-        check = False
-    else:
-        for i in range(2, int(n**0.5)+1):
-            if n % i == 0:
-                check = False
-                return None
-            else:
-                continue
-    if check == True:
-        return n
+def eratos(n):
+    lst = [False, False] + [True]*(n-1)
+    primes = []
+
+    for i in range(2, n+1):
+        if lst[i]:
+            primes.append(i)
+            for j in range(2*i, n+1, i):
+                lst[j] = False
+    return primes
 
 
 while True:
     n = int(sys.stdin.readline())
-    lst = []
+    count = 0
     if n == 0:
-        break
-    else:
-        for i in range(n+1, 2*n+1):
-            if checkPrimeNum(i) != None:
-                lst.append(checkPrimeNum(i))
-        print(len(lst))
+        exit(0)
+    li = eratos(2*n)
+    print(len([i for i in li if i > n]))
 
-# 시간초과
+
+# 2468ms
