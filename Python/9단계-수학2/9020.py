@@ -1,4 +1,5 @@
 # 백준 9020번 문제. 골드바흐의 추측
+# 시간 초과
 import sys
 
 
@@ -20,9 +21,12 @@ def findXY(n):
     for x in prime:
         for y in prime:
             if x + y == n:
-                lst_XY.append((x, y))
+                lst_XY.append([x, y])
 
-    del lst_XY[len(lst_XY)/2:]
+    if len(lst_XY) % 2 == 0:
+        del lst_XY[int(len(lst_XY)/2):]
+    else:
+        del lst_XY[int(len(lst_XY)/2)+1:]
 
     return lst_XY
 
@@ -32,4 +36,4 @@ T = int(sys.stdin.readline())
 for t in range(T):
     n = int(sys.stdin.readline())
     li = findXY(n)
-    print(li)
+    print(li[len(li)-1][0], li[len(li)-1][1])
