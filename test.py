@@ -1,3 +1,2 @@
-lst = [10, 10, 30]
-for i in lst:
-    print(lst.count(i))
+lst = [1, 1, 1]
+print(str(lst))
