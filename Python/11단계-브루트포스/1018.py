@@ -1,38 +1,74 @@
 # 백준 1018번 문제
 import sys
 
-# N, M = map(int, sys.stdin.readline().split())
 
-# chess_board = sys.stdin.read().split()
+def change_BW(x):
+    if x == 'B':
+        return 'W'
+    else:
+        return 'B'
 
-chess_board = [
-    'BBBBBBBBWBWBW',
-    'BBBBBBBBBWBWB',
-    'BBBBBBBBWBWBW',
-    'BBBBBBBBBWBWB',
-    'BBBBBBBBWBWBW',
-    'BBBBBBBBBWBWB',
-    'BBBBBBBBWBWBW',
-    'BBBBBBBBBWBWB',
-    'WWWWWWWWWWBWB',
-    'WWWWWWWWWWBWB'
-]
 
-N = 10
-M = 13
+N, M = map(int, sys.stdin.readline().split())
 
-total = []
+chess_board = []
 
-for z in range(M-7):
-    wrong_lst = []
-    for x in range(8):
-        wrong = 0
-        for y in range(7):
-            if chess_board[x][y+z] != chess_board[x][y+z+1]:
-                continue
+for n in range(N):
+    chess_board.append(input())
+
+count_lst = []
+for x in range(N-7):
+    for y in range(M-7):
+        new_chess = ['B']
+        count = 0
+        if new_chess[0] != chess_board[x][y]:
+            count += 1
+        for a in range(8):
+            if a == 0:
+                for b in range(7):
+                    if new_chess[b] == chess_board[x][y+b+1]:
+                        new_chess.append(change_BW(new_chess[b]))
+                        count += 1
+                    else:
+                        new_chess.append(chess_board[x][y+b+1])
             else:
-                wrong += 1
-        wrong_lst.append(wrong)
-    total.append(sum(wrong_lst))
-print(wrong_lst)
-print(total)
+                if new_chess[8*(a-1)] == chess_board[a+x][y]:
+                    new_chess.append(change_BW(new_chess[8*(a-1)]))
+                    count += 1
+                else:
+                    new_chess.append(chess_board[a+x][y])
+                for b in range(7):
+                    if new_chess[8*a+b] == chess_board[a+x][y+b+1]:
+                        new_chess.append(change_BW(new_chess[8*a+b]))
+                        count += 1
+                    else:
+                        new_chess.append(chess_board[a+x][y+b+1])
+        count_lst.append(count)
+        new_chess = ['W']
+        count = 0
+        if new_chess[0] != chess_board[x][y]:
+            count += 1
+        for a in range(8):
+            if a == 0:
+                for b in range(7):
+                    if new_chess[b] == chess_board[x][y+b+1]:
+                        new_chess.append(change_BW(new_chess[b]))
+                        count += 1
+                    else:
+                        new_chess.append(chess_board[x][y+b+1])
+            else:
+                if new_chess[8*(a-1)] == chess_board[a+x][y]:
+                    new_chess.append(change_BW(new_chess[8*(a-1)]))
+                    count += 1
+                else:
+                    new_chess.append(chess_board[a+x][y])
+                for b in range(7):
+                    if new_chess[8*a+b] == chess_board[a+x][y+b+1]:
+                        new_chess.append(change_BW(new_chess[8*a+b]))
+                        count += 1
+                    else:
+                        new_chess.append(chess_board[a+x][y+b+1])
+        count_lst.append(count)
+print(min(count_lst))
+
+# 200ms
