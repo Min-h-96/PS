@@ -1,9 +1,6 @@
-import sys
+# def num_there(s):
+#     return any(i.isdigit() for i in s)
 
-N, M = map(int, sys.stdin.readline().split())
 
-board = []
-
-for n in range(N):
-    board.append(input())
-print(board)
+# king = 'I shall have some cakes'
+# print(num_there(king))
