@@ -1,8 +1,11 @@
-words = ['but', 'i', 'wont', 'hesitate', 'no', 'more',
-         'no', 'more', 'it', 'cannot', 'wait', 'im', 'yours']
-lst = []
+import sys
 
-for w in words:
-    if w not in lst:
-        lst.append(w)
-print(lst)
+N = int(sys.stdin.readline())
+judge = []
+
+for n in range(N):
+    age, name = list(map(str, sys.stdin.readline().split()))
+    user = [age.zfill(3), name]
+    judge.append(user)
+
+print(judge)
