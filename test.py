@@ -16,11 +16,11 @@ def counting_sort_with_digit(A, d, base):
     # 현재 자릿수를 기준으로 빈도수 세기
     for a in A:
         C[get_digit(a, d, base)] += 1
-    print('C', C)
+
     # C 업데이트
     for i in range(k):
         C[i + 1] += C[i]
-    print('C', C)
+
     # 현재 자릿수를 기준으로 정렬
     for j in reversed(range(len(A))):
         B[C[get_digit(A[j], d, base)] - 1] = A[j]
@@ -41,3 +41,6 @@ def radix_sort(list, base=10):
 if __name__ == "__main__":
     lst = [123, 324, 313, 554, 427, 954, 394]
     print(radix_sort(lst))
+
+    for i in reversed(range(len(lst))):
+        print(i)

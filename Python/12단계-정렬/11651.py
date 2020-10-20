@@ -1,4 +1,4 @@
-# 백준 11650번 문제. 좌표 정렬 1
+# 백준 11651번 문제. 좌표 정렬 2
 import sys
 
 
@@ -28,7 +28,7 @@ def counting_sort_with_digit(A, d):
 def radix_sort(list):
     digit = 2
 
-    for d in reversed(range(digit)):
+    for d in range(digit):
         list = counting_sort_with_digit(list, d)
     return list
 
@@ -45,4 +45,4 @@ if __name__ == "__main__":
     for locate in radix_sort(locations):
         print(locate[0], locate[1])
 
-# 692ms 55840KB
+# 700ms 55840KB
