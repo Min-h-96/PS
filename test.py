@@ -1,11 +1,17 @@
 import sys
+from itertools import combinations_with_replacement
 
-N = int(sys.stdin.readline())
-judge = []
+input_val = list(map(int, sys.stdin.readline().split()))
+N, M = input_val
 
-for n in range(N):
-    age, name = list(map(str, sys.stdin.readline().split()))
-    user = [age.zfill(3), name]
-    judge.append(user)
+def solve(remain):
+    res = list(map(' '.join, combinations_with_replacement(remain, M)))
+    print('\n'.join(res))
 
-print(judge)
+solve(map(str, list(range(1, N+1))))
+
+num_list = [-1, 0, 1, 3, 4, 5, 9]
+
+print(num_list)
+# [-1, 0, 1, 3, 4, 5, 9]
+print(" ".join(map(str, num_list)))
